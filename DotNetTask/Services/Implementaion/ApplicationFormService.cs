@@ -1,11 +1,10 @@
 using AutoMapper;
-using DemoApi.Services.Interface;
 using DotNetTask.Domain.DTOs;
 using DotNetTask.Models;
 using DotNetTask.Services.Interface;
 using Microsoft.Azure.Cosmos;
 
-namespace DemoApi.Services.Implementaion
+namespace DotNetTask.Services.Implementaion
 {
     public class ApplicationFormService : IApplicationFormService
     {

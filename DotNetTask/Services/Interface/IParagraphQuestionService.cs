@@ -1,6 +1,6 @@
 using DotNetTask.Domain.DTOs;
 
-namespace DemoApi.Services.Interface
+namespace DotNetTask.Services.Interface
 {
     public interface IParagraphQuestionService
     {

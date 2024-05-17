@@ -1,3 +1,5 @@
+using DotNetTask.Services.Implementaion;
+using DotNetTask.Services.Interface;
 using Microsoft.Azure.Cosmos;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +37,17 @@ builder.Services.AddSingleton((provider) =>
 
     return cosmosClient;
 });
+
+builder.Services.AddSingleton<IApplicationFormService, ApplicationFormService>();
+builder.Services.AddSingleton<IDateQuestionService, DateQuestionService>();
+builder.Services.AddSingleton<IDropDownQuestionService, DropDownQuestionService>();
+builder.Services.AddSingleton<IMultipleChoiceQuestionService, MultipleChoiceQuestionService>();
+builder.Services.AddSingleton<INumberQuestionService, NumberQuestionService>();
+builder.Services.AddSingleton<IParagraphQuestionService, ParagraphQuestionService>();
+builder.Services.AddSingleton<IYesNoQuestionService, YesNoQuestionService>();
+builder.Services.AddSingleton<IApplicationProgramService, ApplicationProgramService>();
+builder.Services.AddSingleton<IPersonalInformationService, PersonalInformationService>();
+
 
 builder.Services.AddAutoMapper(typeof(Program));
 

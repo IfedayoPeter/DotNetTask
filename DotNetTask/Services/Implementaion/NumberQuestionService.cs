@@ -1,10 +1,10 @@
 using AutoMapper;
-using DemoApi.Services.Interface;
 using DotNetTask.Domain.DTOs;
 using DotNetTask.Domain.Models.QuestionModels;
+using DotNetTask.Services.Interface;
 using Microsoft.Azure.Cosmos;
 
-namespace DemoApi.Services.Implementaion
+namespace DotNetTask.Services.Implementaion
 {
     public class NumberQuestionService : INumberQuestionService
     {
