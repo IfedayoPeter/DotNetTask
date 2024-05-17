@@ -1,9 +1,42 @@
+using Microsoft.Azure.Cosmos;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddSingleton((provider) =>
+{
+    var endpointUri = builder.Configuration.GetSection("AzureCosmosDBSettings")
+    .GetValue<string>("EndpointUri");
+
+    var primaryKey = builder.Configuration.GetSection("AzureCosmosDBSettings")
+    .GetValue<string>("PrimaryKey");
+
+    var databaseName = builder.Configuration.GetSection("AzureCosmosDBSettings")
+    .GetValue<string>("DatabaseName");
+
+    var cosmosClientOption = new CosmosClientOptions
+    {
+        ApplicationName = databaseName
+    };
+
+    var loggerFactory = LoggerFactory.Create(builder =>
+    {
+        builder.AddConsole();
+    });
+
+    var cosmosClient = new CosmosClient(endpointUri, primaryKey, cosmosClientOption);
+
+    cosmosClient.ClientOptions.ConnectionMode = ConnectionMode.Direct;
+
+    return cosmosClient;
+});
+
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 
@@ -15,30 +48,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseRouting();
+app.MapControllers();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
