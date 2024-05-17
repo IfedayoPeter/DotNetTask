@@ -11,7 +11,7 @@ namespace DotNetTask.Domain.Models.QuestionModels
         public DateTime? MinDate { get; set; }
         public DateTime? MaxDate { get; set; }
         public bool IsRequired { get; set; }
-        public DateTime Response { get; set; }
+        public string? Response { get; set; }
     }
 
 }
