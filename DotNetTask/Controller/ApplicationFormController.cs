@@ -15,14 +15,6 @@ namespace DotNetTask.Controllers
             _applicationFormService = applicationFormService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetApplications()
-        {
-            var sqlCosmosQuery = "SELECT * FROM c WHERE IS_DEFINED(c.questionText)";
-            var result = await _applicationFormService.GetApplications(sqlCosmosQuery);
-            return Ok(result);
-        }
-
         [HttpPost]
         public async Task<IActionResult> CreateApplication(ApplicationFormDTO applicationFormDTO)
         {

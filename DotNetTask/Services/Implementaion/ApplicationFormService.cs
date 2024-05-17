@@ -31,23 +31,7 @@ namespace DotNetTask.Services.Implementaion
             await _applicationContainer.CreateItemAsync(question);
             return applicationFormDTO;
         }
-
-        public async Task<List<ApplicationFormDTO>> GetApplications(string sqlCosmosQuery)
-        {
-            var query = _applicationContainer.GetItemQueryIterator<ApplicationForm>(new QueryDefinition(sqlCosmosQuery));
-
-            List<ApplicationForm> responseList = new List<ApplicationForm>();
-            while (query.HasMoreResults)
-            {
-                var response = await query.ReadNextAsync();
-                responseList.AddRange(response);
-            }
-
-            var result = _mapper.Map<List<ApplicationFormDTO>>(responseList);
-
-            return result;
-        }
-
+        
         public async Task<ApplicationFormDTO> UpdateApplication(ApplicationFormDTO applicationFormDTO)
         {
             var application = _mapper.Map<ApplicationForm>(applicationFormDTO);
