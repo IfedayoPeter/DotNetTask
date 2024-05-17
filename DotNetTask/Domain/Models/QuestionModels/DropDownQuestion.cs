@@ -14,5 +14,6 @@ namespace DotNetTask.Domain.Models.QuestionModels
         {
             Options = new List<string>();
         }
+        public object Response { get; set; }
     }
 }

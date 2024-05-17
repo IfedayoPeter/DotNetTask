@@ -11,7 +11,7 @@ namespace DotNetTask.Domain.Models
         public NumberQuestion NumberQuestion { get; set; }
         public ParagraphQuestion ParagraphQuestion { get; set; }
         public YesNoQuestion YesNoQuestion { get; set; }
-        public object Response { get; set; }
+        //public object Response { get; set; }
 
     }
 }

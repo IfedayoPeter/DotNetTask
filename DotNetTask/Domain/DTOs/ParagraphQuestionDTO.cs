@@ -6,5 +6,6 @@ namespace DotNetTask.Domain.DTOs
         public string QuestionText { get; set; }
         public string QuestionType => "Paragraph";
         public bool IsRequired { get; set; }
+        public object Response { get; set; }
     }
 }

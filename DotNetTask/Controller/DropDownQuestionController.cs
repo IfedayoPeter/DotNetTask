@@ -3,7 +3,7 @@ using DotNetTask.Services.Helpers;
 using DotNetTask.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DemoApi.Controllers
+namespace DotNetTask.Controllers
 {
     [ApiController]
     [Route("[controller]")]

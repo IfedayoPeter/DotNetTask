@@ -8,6 +8,7 @@ namespace DotNetTask.Domain.DTOs
         public DateTime? MinDate { get; set; }
         public DateTime? MaxDate { get; set; }
         public bool IsRequired { get; set; }
+        public DateTime Response { get; set; }
 
     }
 }

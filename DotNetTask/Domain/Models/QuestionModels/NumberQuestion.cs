@@ -9,6 +9,6 @@ namespace DotNetTask.Domain.Models.QuestionModels
         public string QuestionText { get; set; }
         public string QuestionType => "Number";
         public bool IsRequired { get; set; }
-
+        public long Response { get; set; }
     }
 }

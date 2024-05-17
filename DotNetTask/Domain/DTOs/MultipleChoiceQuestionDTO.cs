@@ -13,6 +13,7 @@ namespace DotNetTask.Domain.DTOs
         {
             Choices = new List<string>();
         }
+        public object Response { get; set; }
     }
 
 }

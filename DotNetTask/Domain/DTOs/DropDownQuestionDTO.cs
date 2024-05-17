@@ -11,5 +11,6 @@ namespace DotNetTask.Domain.DTOs
         {
             Options = new List<string>();
         }
+        public object Response { get; set; }
     }
 }

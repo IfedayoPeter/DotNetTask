@@ -8,7 +8,5 @@ namespace DotNetTask.Domain.DTOs
         public NumberQuestionDTO NumberQuestion { get; set; }
         public ParagraphQuestionDTO ParagraphQuestion { get; set; }
         public YesNoQuestionDTO YesNoQuestion { get; set; }
-        public object Response { get; set; }
-
     }
 }

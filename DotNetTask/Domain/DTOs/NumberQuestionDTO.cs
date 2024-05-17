@@ -6,6 +6,8 @@ namespace DotNetTask.Domain.DTOs
         public string QuestionText { get; set; }
         public string QuestionType => "Number";
         public bool IsRequired { get; set; }
+        public long Response { get; set; }
     }
+    
 
 }
