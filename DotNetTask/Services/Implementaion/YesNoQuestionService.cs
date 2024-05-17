@@ -19,7 +19,7 @@ namespace DotNetTask.Services.Implementaion
             _configuration = configuration;
             _mapper = mapper;
             var databaseName = configuration["AzureCosmosDBSettings:DatabaseName"];
-            var questionsContainerName = "Questions";
+            var questionsContainerName = "Applications";
             _questionContainer = cosmosClient.GetContainer(databaseName, questionsContainerName);
         }
 
